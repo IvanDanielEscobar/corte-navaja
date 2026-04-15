@@ -1,0 +1,19 @@
+{%extends 'corte/base.html'%}
+
+{%block body%}
+<section>
+    <h1>
+        Seleccionar tu corte de pelo:
+    </h1>
+    <article>
+        {% for corte in cortes %}
+        <h2>
+            {{ corte.name }}
+        </h2>
+        <p> {{ corte.precio }}</p>
+        <p>{{ corte.descripcion }}</p>
+        <a href="{% url 'detail' %}">seleccionar corte</a>
+        {%endfor%}
+    </article>
+</section>
+{%endblock%}
