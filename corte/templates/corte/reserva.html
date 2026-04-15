@@ -1,0 +1,14 @@
+{% extends "corte/base.html" %}
+
+
+{% block body %}
+<h1>GRACIAS POR RESERVAR TU CORTE</h1>
+<ul>
+    <li>Nombre: {{ reserva.nombre }}</li>
+    <li>Telefono: {{ reserva.telefono }}</li>
+    <li>Corte: {{ reserva.corte }}</li>
+</ul>
+
+
+<a href="{% url 'bienvenida' %}">Volver a la página de inicio</a>
+{% endblock %}

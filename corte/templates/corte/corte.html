@@ -12,7 +12,7 @@
         </h2>
         <p> {{ corte.precio }}</p>
         <p>{{ corte.descripcion }}</p>
-        <a href="{% url 'detail' %}">seleccionar corte</a>
+        <button><a href="{% url 'detail' id=corte.id %}">seleccionar corte</a></button>
         {%endfor%}
     </article>
 </section>
