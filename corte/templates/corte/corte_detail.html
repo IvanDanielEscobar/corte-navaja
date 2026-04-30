@@ -6,12 +6,10 @@
 <p>{{ corte.name }}</p>
 <p>{{ corte.precio }}</p>
 
-<form>
-    <label>Nombre:</label>
-    <input type="text" name="nombre" id="nombre">
-    <label>Telefono:</label>
-    <input type="text" name="telefono" id="telefono">
-    <button type="submit"><a href={% url 'reserva' %}>Confirmar</a></button>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
 </form>
 
 

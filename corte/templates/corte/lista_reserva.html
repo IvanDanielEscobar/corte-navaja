@@ -1,0 +1,13 @@
+<h2>Reservas</h2>
+
+<a href="{% url 'crear_reserva' %}">Crear nueva</a>
+
+<ul>
+    {% for r in reservas %}
+        <li>
+            {{ r.nombre }} - {{ r.corte }}
+            <a href="{% url 'editar_reserva' r.id %}">Editar</a>
+            <a href="{% url 'eliminar_reserva' r.id %}">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>

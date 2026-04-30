@@ -1,7 +1,6 @@
 from django.db import models
 
 class Corte(models.Model):
-    id=models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     precio =models.IntegerField()
     descripcion =models.TextField(max_length=250)
@@ -11,7 +10,6 @@ class Corte(models.Model):
 
 
 class Reserva(models.Model):
-    id=models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     telefono = models.CharField(max_length=20)
     corte = models.ForeignKey(Corte, on_delete=models.CASCADE)

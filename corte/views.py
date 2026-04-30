@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import ReservaForm
 from .models import Corte, Reserva
 
 
@@ -14,12 +15,33 @@ def bienvenida(request):
 
 def corte_detail(request, id):
     corte = Corte.objects.get(id=id)
-    return render(request, 'corte/corte_detail.html', {'corte': corte})
-
-def reserva(request):
     if request.method == 'POST':
-        nombre = request.POST['nombre']
-        telefono = request.POST['telefono']
+        form = ReservaForm(request.POST)
+        if form.is_valid():
+            nueva_reserva = form.save(commit=False)
+            nueva_reserva.corte = corte
+            nueva_reserva.save()
+            return redirect('reserva_exitosa', id=nueva_reserva.id)
+    else:
+        form = ReservaForm()
+    return render(request, 'corte/corte_detail.html', {'corte': corte, 'form': form})
 
-    Reserva.objects.create(nombre=nombre, telefono=telefono)
-    return render(request, 'corte/reserva.html', {'nombre': nombre, 'telefono': telefono})
+def lista_reservas(request):
+    reservas = Reserva.objects.all()
+    return render(request, 'corte/lista_reservas.html', {'reservas': reservas})
+
+def crear_reserva(request):
+    form = ReservaForm(request.POST)
+    if form.is_valid():
+        nueva_reserva = form.save()
+        return redirect('reserva', id=nueva_reserva.id)
+
+
+def eliminar_reserva(request, id):
+    reserva = get_object_or_404(Reserva, id=id)
+    reserva.delete()
+    return redirect('lista_reservas')
+
+def reserva_exitosa(request, id):
+    reserva = get_object_or_404(Reserva, id=id)
+    return render(request, 'corte/reserva.html', {'reserva':reserva})
