@@ -1,16 +1,16 @@
 {%extends 'corte/base.html'%}
 
 {%block body%}
+<section class="corte-detalles">
+    <h2 class="titulo-seccion">Detalles cortes</h2>
+    <p class="detalle-nombre">{{ corte.name }}</p>
+    <p class="detalle-precio">{{ corte.precio }}</p>
 
-<h2>Detalles cortes</h2>
-<p>{{ corte.name }}</p>
-<p>{{ corte.precio }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
-
-
+</section>
 {% endblock %}

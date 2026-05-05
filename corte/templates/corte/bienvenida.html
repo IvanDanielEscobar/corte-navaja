@@ -1,7 +1,14 @@
 {% extends 'corte/base.html' %}
 
 {%block body%}
-<h1>Bienvenid@ a Corte & Navaja</h1>
+<section class="bienvenida-container">
+    <h1 class="titulo-bienvenida">
+        Bienvenid@ a Corte & Navaja
+    </h1>
 
-<button type="submit"><a href="{% url 'corte' %}">Reserva tu corte</a></button>
+    <section class="botones-bienvenida">
+        <a href="{% url 'corte' %}" class="btn-reserva">Reserva tu corte</a>
+        <a href="{% url 'lista_reservas' %}" class="btn-reservas">Mirar Reservas</a>
+    </section>
+</section>
 {%endblock%}

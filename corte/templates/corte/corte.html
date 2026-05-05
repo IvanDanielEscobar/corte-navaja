@@ -1,19 +1,23 @@
 {%extends 'corte/base.html'%}
 
 {%block body%}
-<section>
-    <h1>
+<section class="servicios-container">
+    <h1 class="titulo-seccion">
         Seleccionar tu corte de pelo:
     </h1>
-    <article>
+    <section class="cortes-grid">
         {% for corte in cortes %}
-        <h2>
-            {{ corte.name }}
-        </h2>
-        <p> {{ corte.precio }}</p>
-        <p>{{ corte.descripcion }}</p>
-        <button><a href="{% url 'detail' id=corte.id %}">seleccionar corte</a></button>
+        <article class="corte-card">
+            <h2 class="corte-nombre">
+                {{ corte.name }}
+            </h2>
+            <div class="corte-info">
+                <p class="corte-precio"> {{ corte.precio }}</p>
+                <p class="corte-descripcion">{{ corte.descripcion }}</p>
+                <a href="{% url 'detail' id=corte.id %}" class="btn-seleccionar">seleccionar corte</a>
+            </div>
+        </article>
         {%endfor%}
-    </article>
+    </section>
 </section>
 {%endblock%}
