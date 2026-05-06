@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ReservaForm
+from .forms import ReservaForm, EditarReservaForm
 from .models import Corte, Reserva
 
 
@@ -49,10 +49,10 @@ def reserva_exitosa(request, id):
 def editar_reserva(request, id):
     reserva = get_object_or_404(Reserva, id=id)
     if request.method == 'POST':
-        form = ReservaForm(request.POST, instance=reserva)
+        form = EditarReservaForm(request.POST, instance=reserva)
         if form.is_valid():
             form.save()
             return redirect('lista_reservas')
     else:
-        form = ReservaForm(instance=reserva)
+        form = EditarReservaForm(instance=reserva)
     return render(request, 'corte/editar_reserva.html', {'form': form, 'reserva': reserva})
