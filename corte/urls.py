@@ -8,5 +8,6 @@ urlpatterns = [
     path('corte-detail/<int:id>/', views.corte_detail, name='detail'),
     path('reservas/', views.lista_reservas, name='lista_reservas'),
     path('reservas/eliminar/<int:id>/', views.eliminar_reserva, name='eliminar_reserva'),
-    path('reserva/<int:id>/', views.reserva_exitosa, name='reserva_exitosa')
+    path('reserva/<int:id>/', views.reserva_exitosa, name='reserva_exitosa'),
+    path('reserva/editar/<int:id>/', views.editar_reserva,name='editar_reserva')
 ]
