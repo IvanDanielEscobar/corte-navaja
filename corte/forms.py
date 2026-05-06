@@ -9,6 +9,7 @@ class ReservaForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tu nombre'}),
             'telefono': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tu telefono'})
         }
+        
 
 class EditarReservaForm(forms.ModelForm):
     class Meta:
@@ -18,5 +19,5 @@ class EditarReservaForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tu nombre'}),
             'telefono': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Tu telefono'}),
             'corte': forms.Select(attrs={'class':'form-control'}),
-            
+
         }

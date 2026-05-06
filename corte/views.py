@@ -30,11 +30,11 @@ def lista_reservas(request):
     reservas = Reserva.objects.all()
     return render(request, 'corte/lista_reservas.html', {'reservas': reservas})
 
-def crear_reserva(request):
-    form = ReservaForm(request.POST)
-    if form.is_valid():
-        nueva_reserva = form.save()
-        return redirect('reserva', id=nueva_reserva.id)
+# def crear_reserva(request):
+#     form = ReservaForm(request.POST)
+#     if form.is_valid():
+#         nueva_reserva = form.save()
+#         return redirect('reserva', id=nueva_reserva.id)
 
 
 def eliminar_reserva(request, id):

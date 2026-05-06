@@ -1,3 +1,7 @@
+{% extends "corte/base.html" %}
+
+{% block body %}
+
 <h2>Reservas</h2>
 
 <a href="{% url 'corte' %}">Crear nueva</a>
@@ -11,3 +15,7 @@
         </li>
     {% endfor %}
 </ul>
+
+<a href="{% url 'bienvenida' %}">Volver a la página de inicio</a>
+
+{% endblock %}
