@@ -1,17 +1,8 @@
-from django.shortcuts import render, redirect
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from .models import UsuarioPersonalizado
 
-from .forms import UsuarioPersonalizadoForm
-from django.contrib.auth import login
-
-# Create your views here.
-
-def registrarse(request):
-    if request.method == 'POST':
-        form = UsuarioPersonalizadoForm(request.POST, request.FILES)
-        if form.is_valid():
-            usuario = form.save()
-            login(request, usuario)
-            return redirect('tareas')
-    else:
-        form = UsuarioPersonalizadoForm()
-    return render(request, 'registration/register.html', {"form":form})
+class UsuarioPersonalizadoForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = UsuarioPersonalizado
+        fields = UserCreationForm.Meta.fields + ('nombre_completo', 'telefono','dni','foto_perfil')
