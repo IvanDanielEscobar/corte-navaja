@@ -3,13 +3,16 @@
 {%block body%}
 <section class="corte-detalles">
     <h2 class="titulo-seccion">Detalles cortes</h2>
+    {% if corte.imagen %}
+        <img src="{{ corte.imagen.url }}" alt="{{ corte.name }}" class="detalle-imagen">
+    {% endif %}
     <p class="detalle-nombre">{{ corte.name }}</p>
     <p class="detalle-precio">{{ corte.precio }}</p>
 
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn-reserva">Guardar</button>
     </form>
 
 </section>

@@ -2,8 +2,9 @@ from django.db import models
 
 class Corte(models.Model):
     name = models.CharField(max_length=100)
-    precio =models.IntegerField()
-    descripcion =models.TextField(max_length=250)
+    precio = models.IntegerField()
+    descripcion = models.TextField(max_length=250)
+    imagen = models.ImageField(upload_to='cortes/', null=True, blank=True)
 
     def __str__(self):
         return f'{self.id} - {self.name}'

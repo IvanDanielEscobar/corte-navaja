@@ -1,19 +1,15 @@
 
-{% extends 'saludo/base.html'%}
+{% extends 'corte/base.html' %}
 
-{%block body%}
-
-<hr>
-<h1>Iniciar sesión</h1>
-<form method="post">
-
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit"> enviar</button>
-</form>
-<a href="{% url 'register' %}">¿No tienes cuenta? Registrarse</a>
-
-
-{%endblock%}
+{% block body %}
+<section class="auth-form-container">
+    <h1>Iniciar sesión</h1>
+    <form method="post" class="auth-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-reserva">Ingresar</button>
+    </form>
+    <p>¿No tenés cuenta? <a href="{% url 'register' %}">Registrarse</a></p>
+</section>
+{% endblock %}
 

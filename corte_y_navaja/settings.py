@@ -57,21 +57,21 @@ ROOT_URLCONF = 'corte_y_navaja.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+    'DIRS': [BASE_DIR / 'templates'],
+    'APP_DIRS': True,
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.debug',
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+        ],
     },
+},
 ]
 
-LOGIN_REDIRECT_URL = 'tareas'
-LOGOUT_REDIRECT_URL = 'login'
+AUTH_USER_MODEL = 'usuarios.UsuarioPersonalizado'
+LOGIN_REDIRECT_URL = 'bienvenida'
 
 WSGI_APPLICATION = 'corte_y_navaja.wsgi.application'
 

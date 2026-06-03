@@ -8,11 +8,12 @@
     <section class="cortes-grid">
         {% for corte in cortes %}
         <article class="corte-card">
-            <h2 class="corte-nombre">
-                {{ corte.name }}
-            </h2>
+            {% if corte.imagen %}
+                <img src="{{ corte.imagen.url }}" alt="{{ corte.name }}" class="corte-image">
+            {% endif %}
+            <h2 class="corte-nombre">{{ corte.name }}</h2>
             <div class="corte-info">
-                <p class="corte-precio"> {{ corte.precio }}</p>
+                <p class="corte-precio">{{ corte.precio }}</p>
                 <p class="corte-descripcion">{{ corte.descripcion }}</p>
                 <a href="{% url 'detail' id=corte.id %}" class="btn-seleccionar">seleccionar corte</a>
             </div>
