@@ -18,7 +18,10 @@
                 <a href="{% url 'lista_reservas' %}">Reservas</a>
                 {% if user.is_authenticated %}
                     <span class="nav-user">Hola, {{ user.username }}</span>
-                    <a href="{% url 'logout' %}">Cerrar sesión</a>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Cerrar Sesión</button>
+                    </form>
                 {% else %}
                     <a href="{% url 'login' %}">Iniciar sesión</a>
                     <a href="{% url 'register' %}">Registrarse</a>
