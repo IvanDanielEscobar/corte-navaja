@@ -72,6 +72,7 @@ TEMPLATES = [
 
 AUTH_USER_MODEL = 'usuarios.UsuarioPersonalizado'
 LOGIN_REDIRECT_URL = 'bienvenida'
+LOGOUT_REDIRECT_URL = 'bienvenida'
 
 WSGI_APPLICATION = 'corte_y_navaja.wsgi.application'
 
